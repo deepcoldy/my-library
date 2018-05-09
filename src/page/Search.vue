@@ -15,10 +15,10 @@
 </template>
 <script>
 import { Field, Header, Button, Cell, Indicator } from 'mint-ui'
-import axios from "axios";
+import axios from 'axios'
 
 export default {
-  data() {
+  data () {
     return {
       search: '',
       type: 'bookname',
@@ -32,9 +32,9 @@ export default {
     Field, Header, Button, Cell, Indicator
   },
   methods: {
-    searchBooks() {
-      Indicator.open();
-      axios.get('http://1.elroitas.applinzi.com/cha.php',{
+    searchBooks () {
+      Indicator.open()
+      axios.get('http://1.elroitas.applinzi.com/cha.php', {
         params: {
           search: this.search,
           type: this.type
@@ -48,7 +48,7 @@ export default {
         .catch((error) => {
           Indicator.close()
           console.log(error)
-        });
+        })
     }
   }
 }
