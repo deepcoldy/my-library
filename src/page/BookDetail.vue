@@ -25,7 +25,7 @@ export default {
   methods: {
     init () {
       Indicator.open()
-      axios.get('http://127.0.0.1:7001/search/detail', {
+      axios.get(`http://${location.hostname}:7001/search/detail`, {
         params: {
           id: this.id
         }
