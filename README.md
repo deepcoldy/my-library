@@ -23,9 +23,13 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## 技术架构
 
 ### JS框架
+
 [Vue](https://cn.vuejs.org/index.html)
+
 [Vue Router](https://router.vuejs.org/zh-cn/)
 
 ### UI框架
+
 [mint](http://mint-ui.github.io/#!/zh-cn)
+
 [vant](https://www.youzanyun.com/zanui)
