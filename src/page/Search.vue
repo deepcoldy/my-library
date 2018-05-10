@@ -10,6 +10,7 @@
   <mt-search
     v-model="search"
     placeholder="请输入要查询的书名或作者">
+    <div class="blank"></div>
     <mt-cell
       v-for="(item, index) in result"
       :to="`/BookDetail?id=${item.id}`"
@@ -32,7 +33,7 @@ export default {
   components: {
     Indicator
   },
-  created () {
+  mounted () {
     console.log(this.$route)
     this.search = this.$route.query.q
   },
@@ -75,6 +76,9 @@ export default {
 }
 </script>
 <style scoped>
+.blank{
+  height: 8px;
+}
 .no-result{
   color: #666;
   margin: 20px auto;

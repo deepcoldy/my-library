@@ -1,16 +1,20 @@
 <template>
-  <van-panel :title="book.name" :desc="book.writer" :status="book.status">
+  <van-panel :title="book.name" :desc="book.writer" :status="book.available_number ? `可借，剩余${book.available_number}本` : '已借空'">
     <div class="content">
       <div>出版社：{{ book.publisher }}</div>
+      <div>馆藏：{{ book.total_number }}本</div>
       <div>价格：{{ book.price }}</div>
       <van-rate v-model="book.score" />
+    </div>
+    <div class="footer" slot="footer">
+      <van-button size="small" type="primary">预约借阅</van-button>
     </div>
   </van-panel>
 </template>
 <script>
 import { Indicator } from 'mint-ui'
 import axios from 'axios'
-import { Panel } from 'vant'
+import { Panel, Button } from 'vant'
 
 export default {
   data () {
@@ -20,7 +24,7 @@ export default {
     }
   },
   components: {
-    Panel
+    Panel, Button
   },
   methods: {
     init () {
@@ -38,21 +42,14 @@ export default {
             score: Number(data.score),
             publisher: data.publisher,
             price: Number(data.price).toFixed(2) + '元',
-            status: this.status(data.status)
+            available_number: data.available_number,
+            total_number: data.total_number
           }
         })
         .catch((error) => {
           Indicator.close()
           console.log(error)
         })
-    },
-    status (status) {
-      switch (status) {
-        case 1:
-          return '在馆'
-        case 0:
-          return '已借出'
-      }
     }
   },
   created () {
@@ -64,5 +61,9 @@ export default {
 <style scoped>
 .content{
   padding: 15px;
+}
+.footer{
+  display: flex;
+  flex-direction: row-reverse;
 }
 </style>

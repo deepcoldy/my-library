@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { Field, Header, Button, Cell, Search } from 'mint-ui'
-import { Panel, Rate } from 'vant'
+import { Panel, Rate, Button as vanButton } from 'vant'
 
 Vue.use(Rate)
 Vue.use(Panel)
+Vue.use(vanButton)
+
 Vue.config.productionTip = false
 
 Vue.component(Field.name, Field)
