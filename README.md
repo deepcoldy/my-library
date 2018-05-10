@@ -20,5 +20,12 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+## 技术架构
 
-test
+### JS框架
+[Vue](https://cn.vuejs.org/index.html)
+[Vue Router](https://router.vuejs.org/zh-cn/)
+
+### UI框架
+[mint](http://mint-ui.github.io/#!/zh-cn)
+[vant](https://www.youzanyun.com/zanui)
