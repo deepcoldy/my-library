@@ -50,9 +50,7 @@ export default {
         Toast.fail('请填写完整')
         return
       }
-      axios.create({
-        withCredentials: true
-      })
+      axios.defaults.withCredentials = true
       axios.post(`http://${location.hostname}:7001/login`, {
         account: this.account,
         password: this.password
