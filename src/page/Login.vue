@@ -50,11 +50,15 @@ export default {
         Toast.fail('请填写完整')
         return
       }
-      axios.defaults.withCredentials = true
-      axios.defaults.headers.post['Content-Type'] = 'application/json'
-      axios.post(`http://${location.hostname}:7001/login`, {
-        account: this.account,
-        password: this.password
+      axios({
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        withCredentials: true,
+        data: {
+          account: this.account,
+          password: this.password
+        },
+        url: `http://${location.hostname}:7001/login`
       }).then(({ data }) => {
         this.$router.push({ name: 'Profile' })
       }).catch(() => {
