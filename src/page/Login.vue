@@ -53,7 +53,6 @@ export default {
       axios({
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        withCredentials: true,
         data: {
           account: this.account,
           password: this.password
