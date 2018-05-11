@@ -51,6 +51,7 @@ export default {
         return
       }
       axios.defaults.withCredentials = true
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
       axios.post(`http://${location.hostname}:7001/login`, {
         account: this.account,
         password: this.password
