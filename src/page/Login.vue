@@ -57,7 +57,7 @@ export default {
           account: this.account,
           password: this.password
         },
-        url: `http://${location.hostname}:7001/login`
+        url: `api/login`
       }).then(({ data }) => {
         this.$router.push({ name: 'Profile' })
       }).catch(() => {

@@ -68,7 +68,7 @@ export default {
         Toast.fail('请填写完整')
         return
       }
-      axios.post(`http://${location.hostname}:7001/register`, {
+      axios.post(`api/register`, {
         account: this.account,
         name: this.name,
         password: this.password,

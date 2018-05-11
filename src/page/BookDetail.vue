@@ -29,7 +29,7 @@ export default {
   methods: {
     init () {
       Indicator.open()
-      axios.get(`http://${location.hostname}:7001/search/detail`, {
+      axios.get(`api/search/detail`, {
         params: {
           id: this.id
         }

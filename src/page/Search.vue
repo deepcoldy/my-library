@@ -53,7 +53,7 @@ export default {
   methods: {
     searchBooks () {
       Indicator.open()
-      axios.get(`http://${location.hostname}:7001/search`, {
+      axios.get(`api/search`, {
         params: {
           q: this.search
         }

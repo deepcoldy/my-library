@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     init () {
-      axios.get(`http://${location.hostname}:7001/profile`)
+      axios.get(`api/profile`)
         .then(({ data }) => {
           this.profile = {
             name: data.name,
