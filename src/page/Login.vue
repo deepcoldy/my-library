@@ -39,6 +39,12 @@ export default {
       openid: ''
     }
   },
+  created () {
+    console.log(this.$route)
+    if (this.$route.query && this.$route.query.openid) {
+      this.openid = this.$route.query.openid // 有openid，则为绑定微信界面
+    }
+  },
   components: {
     Indicator, Field, Cell, CellGroup, Button, NavBar, Toast, Dialog
   },
@@ -73,12 +79,6 @@ export default {
     },
     wechatLogin () {
       location.href = 'http://library.iscode.cn/api/auth/weixin'
-    },
-    created () {
-      if (this.$route.query && this.$route.query.openid) {
-        this.openid = this.$route.query.openid // 有openid，则为绑定微信界面
-      }
-      console.log(this.$route)
     }
   }
 }
