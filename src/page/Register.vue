@@ -76,7 +76,7 @@ export default {
       }).then((resp) => {
         Toast.success('注册成功，请登录')
         this.$router.push({ name: 'Login',
-          params: {
+          query: {
             openid: this.$route.query.openid
           } })
       }).catch(() => {

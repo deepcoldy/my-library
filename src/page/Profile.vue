@@ -38,7 +38,7 @@ export default {
             }).then(() => {
               this.$router.push({
                 name: 'Login',
-                params: {
+                query: {
                   openid: data.open_id
                 }
               })

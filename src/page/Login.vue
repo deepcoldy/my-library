@@ -51,7 +51,7 @@ export default {
   methods: {
     goRegister () {
       this.$router.push({ name: 'Register',
-        params: {
+        query: {
           openid: this.openid
         }})
     },
