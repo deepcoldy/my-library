@@ -2,7 +2,7 @@
 <div>
   <van-nav-bar
     title="注册"
-    left-text="返回"
+    left-text="直接登陆"
     left-arrow
     @click-left="backLogin"
   />
@@ -74,7 +74,7 @@ export default {
         password: this.password,
         number: this.number
       }).then((resp) => {
-        Toast.success('注册成功，请登录')
+        Toast.success('注册成功，请登录' + this.$route.query.openid ? '即可绑定微信' : '')
         this.$router.push({ name: 'Login',
           query: {
             openid: this.$route.query.openid
