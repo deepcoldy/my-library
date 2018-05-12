@@ -7,6 +7,7 @@
       <van-cell title="姓名" :value="profile.name" />
       <van-cell title="学号" :value="profile.student_number" />
       <van-cell title="总借书次数" :value="profile.borrow_times" />
+      <van-cell title="微信" :value="profile.bind_weixin ? '已绑定' : '点击绑定'" @click="bindWechat"/>
     </van-cell-group>
     <van-loading color="white" v-if="!profile.name"/>
   </div>
@@ -48,9 +49,13 @@ export default {
           this.profile = {
             name: data.name,
             student_number: data.student_number,
-            borrow_times: data.borrow_times.toString()
+            borrow_times: data.borrow_times.toString(),
+            bind_weixin: !!data.open_id
           }
         })
+    },
+    bindWechat () {
+      location.href = 'http://library.iscode.cn/api/auth/weixin'
     }
   },
   created () {
