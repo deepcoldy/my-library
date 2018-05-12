@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { Field, Header, Button, Cell, Search } from 'mint-ui'
-import { Panel, Rate, Button as vantButton, Field as vantField, Cell as vantCell, CellGroup, NavBar, Toast, Dialog, Loading } from 'vant'
+import { Panel, Rate, Button as vantButton, Field as vantField, Cell as vantCell, CellGroup, NavBar, Toast, Dialog, Loading, Tag } from 'vant'
 
 Vue.use(vantField)
 Vue.use(Rate)
@@ -16,6 +16,7 @@ Vue.use(NavBar)
 Vue.use(Toast)
 Vue.use(Dialog)
 Vue.use(Loading)
+Vue.use(Tag)
 
 Vue.config.productionTip = false
 

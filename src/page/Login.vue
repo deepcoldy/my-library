@@ -61,14 +61,14 @@ export default {
         return
       }
       axios({
+        url: `api/login`,
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         data: {
           account: this.account,
           password: this.password,
           open_id: this.openid
-        },
-        url: `api/login`
+        }
       }).then(({ data }) => {
         this.$router.push({ name: 'Profile' })
       }).catch(() => {

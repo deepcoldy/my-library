@@ -7,13 +7,19 @@
       <van-cell title="姓名" :value="profile.name" />
       <van-cell title="学号" :value="profile.student_number" />
       <van-cell title="总借书次数" :value="profile.borrow_times" />
-      <van-cell title="微信" :value="profile.bind_weixin ? '已绑定' : '点击绑定'" @click="bindWechat"/>
+      <van-cell title="微信" icon="wechat"
+        :value="profile.bind_weixin ? '点击解绑' : '点击绑定'" @click="bindWechat">
+        <template slot="title">
+          <span class="van-cell-text">微信</span>
+          <van-tag :type="profile.bind_weixin ? 'primary' : 'danger'">{{ profile.bind_weixin ? '已绑定' : '未绑定' }}</van-tag>
+        </template>
+      </van-cell>
     </van-cell-group>
     <van-loading color="white" v-if="!profile.name"/>
   </div>
 </template>
 <script>
-import { Cell, CellGroup, Loading, Dialog } from 'vant'
+import { Cell, CellGroup, Loading, Dialog, Toast, Tag } from 'vant'
 import axios from 'axios'
 
 export default {
@@ -27,7 +33,7 @@ export default {
     }
   },
   components: {
-    Cell, CellGroup, Loading
+    Cell, CellGroup, Loading, Dialog, Toast, Tag
   },
   methods: {
     init () {
@@ -53,9 +59,21 @@ export default {
             bind_weixin: !!data.open_id
           }
         })
+        .catch(() => {
+          Toast.fail('未登陆')
+          this.$router.push({
+            name: 'Login'
+          })
+        })
     },
     bindWechat () {
-      location.href = 'http://library.iscode.cn/api/auth/weixin'
+      if (this.profile.bind_weixin) {
+        axios.get(`api/unbind`).then(() => {
+          this.profile.bind_weixin = ''
+        })
+      } else {
+        location.href = 'http://library.iscode.cn/api/auth/weixin'
+      }
     }
   },
   created () {
