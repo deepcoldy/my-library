@@ -67,7 +67,7 @@ export default {
       })
     },
     wechatLogin () {
-      location.href = 'http://library-api.iscode.cn/api/auth/weixin'
+      location.href = 'http://library.iscode.cn/api/auth/weixin'
     }
   }
 }
