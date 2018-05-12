@@ -75,7 +75,10 @@ export default {
         number: this.number
       }).then((resp) => {
         Toast.success('注册成功，请登录')
-        this.$router.push({ name: 'Login' })
+        this.$router.push({ name: 'Login',
+          params: {
+            openid: this.$route.query.openid
+          } })
       }).catch(() => {
         Dialog.alert({
           title: '注册失败'

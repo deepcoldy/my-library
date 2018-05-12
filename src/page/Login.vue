@@ -1,7 +1,7 @@
 <template>
 <div>
   <van-nav-bar
-    title="登录"
+    :title="openid ? '绑定账号' : '登录'"
     right-text="注册"
     @click-right="goRegister"
   />
@@ -22,8 +22,8 @@
       required
     />
   </van-cell-group>
-  <van-button type="primary" class="button" @click="login">登录</van-button>
-  <van-button type="default" class="button" @click="wechatLogin">微信登录</van-button>
+  <van-button type="primary" class="button" @click="login">{{ openid ? '绑定微信' : '登录' }}</van-button>
+  <van-button type="default" class="button" @click="wechatLogin" v-if="!openid">微信登录</van-button>
 </div>
 </template>
 <script>
@@ -35,7 +35,8 @@ export default {
   data () {
     return {
       account: '',
-      password: ''
+      password: '',
+      openid: ''
     }
   },
   components: {
@@ -43,7 +44,10 @@ export default {
   },
   methods: {
     goRegister () {
-      this.$router.push({ name: 'Register' })
+      this.$router.push({ name: 'Register',
+        params: {
+          openid: this.openid
+        }})
     },
     login () {
       if (!this.account || !this.password) {
@@ -55,19 +59,26 @@ export default {
         headers: { 'content-type': 'application/json' },
         data: {
           account: this.account,
-          password: this.password
+          password: this.password,
+          open_id: this.openid
         },
         url: `api/login`
       }).then(({ data }) => {
         this.$router.push({ name: 'Profile' })
       }).catch(() => {
         Dialog.alert({
-          title: '登录失败'
+          title: this.openid ? '账号或密码错误，绑定失败' : '账号或密码错误，登录失败'
         })
       })
     },
     wechatLogin () {
       location.href = 'http://library.iscode.cn/api/auth/weixin'
+    },
+    created () {
+      if (this.$route.query && this.$route.query.openid) {
+        this.openid = this.$route.query.openid // 有openid，则为绑定微信界面
+      }
+      console.log(this.$route)
     }
   }
 }
