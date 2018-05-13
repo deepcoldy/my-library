@@ -3,18 +3,22 @@
     <van-nav-bar
       title="个人信息"
     />
-    <van-cell-group v-if="profile.name">
-      <van-cell title="姓名" :value="profile.name" />
-      <van-cell title="学号" :value="profile.student_number" />
-      <van-cell title="总借书次数" :value="profile.borrow_times" />
-      <van-cell title="微信" icon="wechat"
-        :value="profile.bind_weixin ? '点击解绑' : '点击绑定'" @click="bindWechat">
-        <template slot="title">
-          <span class="van-cell-text">微信</span>
-          <van-tag :type="profile.bind_weixin ? 'primary' : 'danger'">{{ profile.bind_weixin ? '已绑定' : '未绑定' }}</van-tag>
-        </template>
-      </van-cell>
-    </van-cell-group>
+    <div v-if="profile.name">
+      <van-cell-group>
+        <van-cell title="姓名" :value="profile.name" />
+        <van-cell title="学号" :value="profile.student_number" />
+        <van-cell title="总借书次数" :value="profile.borrow_times" />
+        <van-cell title="微信" icon="wechat"
+          :value="profile.bind_weixin ? '点击解绑' : '点击绑定'" @click="bindWechat">
+          <template slot="title">
+            <span class="van-cell-text">微信登陆</span>
+            <van-tag :type="profile.bind_weixin ? 'primary' : 'danger'">{{ profile.bind_weixin ? '已绑定' : '未绑定' }}</van-tag>
+          </template>
+        </van-cell>
+      </van-cell-group>
+      <van-button class="button" size="large" type="primary" @click="goSearch">搜索图书</van-button>
+      <van-button class="button" size="large" type="default">扫码借书</van-button>
+    </div>
     <van-loading color="white" v-if="!profile.name"/>
   </div>
 </template>
@@ -74,6 +78,9 @@ export default {
       } else {
         location.href = 'http://library.iscode.cn/api/auth/weixin'
       }
+    },
+    goSearch () {
+      this.$router.push({ name: 'Search' })
     }
   },
   created () {
@@ -81,3 +88,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.button{
+  width: 90%;
+  display: block;
+  margin: 10px auto;
+}
+</style>
