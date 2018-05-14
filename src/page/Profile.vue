@@ -9,8 +9,8 @@
         <van-cell title="学号" :value="profile.student_number" />
         <van-cell :value="profile.borrow_times" @click="goBorrowed()">
           <template slot="title">
-            <span class="van-cell-text">借书次数</span>
-            <van-tag :type="'primary'">未还：{{ profile.borrow_times }}本</van-tag>
+            <span class="van-cell-text">借书总次数</span>
+            <van-tag :type="'primary'">点击查看</van-tag>
           </template>
         </van-cell>
         <van-cell title="微信" icon="wechat"
@@ -22,7 +22,7 @@
         </van-cell>
       </van-cell-group>
       <van-button class="button" size="large" type="primary" @click="goSearch()">搜索图书</van-button>
-      <van-button class="button" size="large" type="default">扫码借书</van-button>
+      <!-- <van-button class="button" size="large" type="default">扫码借书</van-button> -->
     </div>
     <van-loading color="white" v-if="!profile.name"/>
   </div>

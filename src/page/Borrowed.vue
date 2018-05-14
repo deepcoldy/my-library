@@ -14,13 +14,14 @@
         </template>
         <template slot="right-icon" v-if="!item.returned">
           <div class="button-group">
-            <van-button :type="item.due ? 'disabled' : 'default'" @click="renewBook(item.record_id)">{{ item.due ? '已逾期' : '续借' }}</van-button>
+            <van-button :type="item.due ? 'disabled' : 'default'" @click="item.due ? '' : renewBook(item.record_id)">{{ item.due ? '已逾期' : '续借' }}</van-button>
             <div style="width:10px;"></div>
             <van-button type="primary" @click="returnBook(item.record_id)">还书</van-button>
           </div>
         </template>
       </van-cell>
     </van-cell-group>
+    <div class="no-result" v-show="!history.length"> 暂无借书历史 </div>
   </div>
 </template>
 <script>
@@ -92,5 +93,10 @@ export default {
 .button-group{
   display: flex;
   align-items: center;
+}
+.no-result{
+  color: #666;
+  margin: 20px auto;
+  text-align: center;
 }
 </style>
