@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/page/Login'
 import Register from '@/page/Register'
 import Profile from '@/page/Profile'
+import Borrowed from '@/page/Borrowed'
 import Search from '@/page/Search'
 import BookDetail from '@/page/BookDetail'
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/borrowed',
+      name: 'Borrowed',
+      component: Borrowed
     },
     {
       path: '/search',

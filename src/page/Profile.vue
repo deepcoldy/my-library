@@ -7,16 +7,21 @@
       <van-cell-group>
         <van-cell title="姓名" :value="profile.name" />
         <van-cell title="学号" :value="profile.student_number" />
-        <van-cell title="总借书次数" :value="profile.borrow_times" />
+        <van-cell :value="profile.borrow_times" @click="goBorrowed()">
+          <template slot="title">
+            <span class="van-cell-text">借书次数</span>
+            <van-tag :type="'primary'">未还：{{ profile.borrow_times }}本</van-tag>
+          </template>
+        </van-cell>
         <van-cell title="微信" icon="wechat"
-          :value="profile.bind_weixin ? '点击解绑' : '点击绑定'" @click="bindWechat">
+          :value="profile.bind_weixin ? '点击解绑' : '点击绑定'" @click="bindWechat()">
           <template slot="title">
             <span class="van-cell-text">微信登陆</span>
             <van-tag :type="profile.bind_weixin ? 'primary' : 'danger'">{{ profile.bind_weixin ? '已绑定' : '未绑定' }}</van-tag>
           </template>
         </van-cell>
       </van-cell-group>
-      <van-button class="button" size="large" type="primary" @click="goSearch">搜索图书</van-button>
+      <van-button class="button" size="large" type="primary" @click="goSearch()">搜索图书</van-button>
       <van-button class="button" size="large" type="default">扫码借书</van-button>
     </div>
     <van-loading color="white" v-if="!profile.name"/>
@@ -81,6 +86,9 @@ export default {
     },
     goSearch () {
       this.$router.push({ name: 'Search' })
+    },
+    goBorrowed () {
+      this.$router.push({ name: 'Borrowed' })
     }
   },
   created () {

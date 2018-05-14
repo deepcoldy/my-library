@@ -1,5 +1,5 @@
 <template>
-  <van-panel :title="book.name" :desc="book.writer" :status="book.available_number ? `可借，剩余${book.available_number}本` : '已借空'">
+  <van-panel :title="book.name" :desc="book.writer" :status="book.available_number ? `剩余${book.available_number}本` : '已借空'">
     <div class="content">
       <div>出版社：{{ book.publisher }}</div>
       <div>馆藏：{{ book.total_number }}本</div>
