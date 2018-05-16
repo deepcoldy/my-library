@@ -90,13 +90,5 @@ export default {
 }
 </script>
 <style>
-.button-group{
-  display: flex;
-  align-items: center;
-}
-.no-result{
-  color: #666;
-  margin: 20px auto;
-  text-align: center;
-}
+  @import "../assets/common.css"
 </style>

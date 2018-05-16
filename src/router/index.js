@@ -6,6 +6,7 @@ import Profile from '@/page/Profile'
 import Borrowed from '@/page/Borrowed'
 import Search from '@/page/Search'
 import BookDetail from '@/page/BookDetail'
+import LatestBook from '@/page/LatestBook'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/BookDetail',
       name: 'BookDetail',
       component: BookDetail
+    },
+    {
+      path: '/latest',
+      name: 'LatestBook',
+      component: LatestBook
     }
   ]
 })
