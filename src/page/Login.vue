@@ -85,6 +85,7 @@ export default {
       axios.get(`api/profile`)
         .then(({ data }) => {
           if (data.status !== 'unbind') {
+            Toast.success('自动登录')
             this.$router.push({
               name: 'Profile'
             })
