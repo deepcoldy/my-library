@@ -44,6 +44,7 @@ export default {
     if (this.$route.query && this.$route.query.openid) {
       this.openid = this.$route.query.openid // 有openid，则为绑定微信界面
     }
+    this.init()
   },
   components: {
     Indicator, Field, Cell, CellGroup, Button, NavBar, Toast, Dialog
@@ -79,6 +80,16 @@ export default {
     },
     wechatLogin () {
       location.href = 'http://library.iscode.cn/api/auth/weixin'
+    },
+    init () { // 检查是否可以自动登录
+      axios.get(`api/profile`)
+        .then(({ data }) => {
+          if (data.status !== 'unbind') {
+            this.$router.push({
+              name: 'Profile'
+            })
+          }
+        })
     }
   }
 }
