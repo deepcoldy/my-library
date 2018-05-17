@@ -1,19 +1,19 @@
 <template>
   <div class="">
     <van-nav-bar
-      title="新书推荐"
+      title="借阅排行"
     />
     <van-cell-group>
       <van-cell v-for="(item, index) in books" :key="`books${index}`" is-link @click="goDetail(item.id)">
         <template slot="title">
           <span class="van-cell-text">{{item.name}}</span>
-          <div class="van-cell__label">上架日期：{{item.date}}</div>
+          <div class="van-cell__label">借阅次数：{{item.count}}</div>
           <div class="van-cell__label">馆藏总数：{{item.total_number}}本</div>
           <div class="van-cell__label">在馆数量：{{item.available_number}}本</div>
         </template>
       </van-cell>
     </van-cell-group>
-    <div class="no-result" v-show="!books.length"> 暂无新书推荐 </div>
+    <div class="no-result" v-show="!books.length"> 暂无借阅 </div>
   </div>
 </template>
 <script>
@@ -33,7 +33,7 @@ export default {
   methods: {
     init () {
       Indicator.open()
-      axios.get(`api/book/latest`)
+      axios.get(`api/book/rank`)
         .then(({ data }) => {
           Indicator.close()
           this.books = data

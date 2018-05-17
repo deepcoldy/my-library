@@ -7,6 +7,7 @@ import Borrowed from '@/page/Borrowed'
 import Search from '@/page/Search'
 import BookDetail from '@/page/BookDetail'
 import LatestBook from '@/page/LatestBook'
+import BorrowRank from '@/page/BorrowRank'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/latest',
       name: 'LatestBook',
       component: LatestBook
+    },
+    {
+      path: '/BorrowRank',
+      name: 'BorrowRank',
+      component: BorrowRank
     }
   ]
 })
