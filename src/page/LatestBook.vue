@@ -4,12 +4,12 @@
       title="新书推荐"
     />
     <van-cell-group>
-      <van-cell v-for="(item, index) in books" :key="`books${index}`">
+      <van-cell v-for="(item, index) in books" :key="`books${index}`" is-link @click="goDetail(item.id)">
         <template slot="title">
-
-        </template>
-        <template slot="right-icon" v-if="!item.returned">
-
+          <span class="van-cell-text">{{item.name}}</span>
+          <div class="van-cell__label">上架日期：{{item.date}}</div>
+          <div class="van-cell__label">馆藏总数：{{item.total_number}}本</div>
+          <div class="van-cell__label">在馆个数：{{item.available_number}}本</div>
         </template>
       </van-cell>
     </van-cell-group>
@@ -33,15 +33,20 @@ export default {
   methods: {
     init () {
       Indicator.open()
-      axios.get(`api/books/latest`)
+      axios.get(`api/book/latest`)
         .then(({ data }) => {
           Indicator.close()
-          this.book = data
+          this.books = data
         })
         .catch((error) => {
           Indicator.close()
           console.log(error)
         })
+    },
+    goDetail (id) {
+      this.$router.push({
+        path: '/BookDetail?id=' + id
+      })
     }
   },
   created () {
