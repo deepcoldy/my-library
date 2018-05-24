@@ -19,7 +19,7 @@ export const router = new Router({
       name: 'Login',
       component: Login,
       meta: {
-        title: '登录'
+        title: 'Kiko Library'
       }
     },
     {
@@ -27,7 +27,7 @@ export const router = new Router({
       name: 'Register',
       component: Register,
       meta: {
-        title: '注册'
+        title: 'Kiko Library'
       }
     },
     {
@@ -35,7 +35,7 @@ export const router = new Router({
       name: 'Profile',
       component: Profile,
       meta: {
-        title: '个人信息'
+        title: 'Kiko Library'
       }
     },
     {
@@ -43,7 +43,7 @@ export const router = new Router({
       name: 'Borrowed',
       component: Borrowed,
       meta: {
-        title: '借书历史'
+        title: 'Kiko Library'
       }
     },
     {
@@ -51,7 +51,7 @@ export const router = new Router({
       name: 'Search',
       component: Search,
       meta: {
-        title: '搜索书籍'
+        title: 'Kiko Library'
       }
     },
     {
@@ -59,7 +59,7 @@ export const router = new Router({
       name: 'BookDetail',
       component: BookDetail,
       meta: {
-        title: '书籍详情'
+        title: 'Kiko Library'
       }
     },
     {
@@ -67,7 +67,7 @@ export const router = new Router({
       name: 'LatestBook',
       component: LatestBook,
       meta: {
-        title: '最新上架'
+        title: 'Kiko Library'
       }
     },
     {
@@ -75,7 +75,7 @@ export const router = new Router({
       name: 'BorrowRank',
       component: BorrowRank,
       meta: {
-        title: '借书排行'
+        title: 'Kiko Library'
       }
     },
     {
